@@ -1,0 +1,68 @@
+name: Local Docker Build
+
+on:
+  push:
+    branches:
+      - dev
+  workflow_dispatch:
+
+jobs:
+  build-and-store-locally:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # - name: Maven install
+      #   run: mvn clean package -Dmaven.test.skip
+      #   working-directory: /home/seato/vsc/java/c0rt
+
+      # - name: Build Docker Image
+      #   run: |
+      #     echo "Started Building the new new Image"
+      #     docker-compose up
+      #     echo "finished Image build"
+        # working-directory: /home/seato/vsc/java/c0rt
+
+      # - name: Save Docker Image Locally
+      #   run: |
+      #     cd /home/seato/vsc/java/c0rt/_temp
+      #     docker save c0rt-app:latest -o c0rt-app.tar
+
+      # - name: Copy Docker Image to Local Directory
+      #   env:
+      #     REMOTE_USER: ${{ secrets.REMOTE_USER }}
+      #     REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+      #   run: |
+      #     echo "finished Image build"
+      #     script -q -c "scp -v -i ~/.ssh/id_rsa /home/seato/vsc/java/c0rt/_temp/c0rt-app.tar $REMOTE_USER@$REMOTE_HOST:~" /home/seato/vsc/java/c0rt/_temp/logfile.log
+
+      - name: Load and Run App
+        env:
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+        run: |
+          echo 'Running commands on the remote server...'
+          echo 'Stopping running instance right now'
+          docker stop masta-keefz
+          docker rm masta-keefz 
+          docker rmi masta-keef-app 
+          docker-compose -p mmk up -d
+
+          docker logs home-c0rt-bot-1
+          echo 'All done! Have fun.'
+
+# export BOT_TOKEN="${{ secrets.BOT_TOKEN }}"
+# export BOT_GUILD="${{ secrets.BOT_GUILD }}"
+# export BOT_CHANNEL="${{ secrets.BOT_CHANNEL }}"
+# export SEAT="${{ secrets.SEAT }}"
+# export GPT_KEY="${{ secrets.GPT_KEY }}"
+# export DB_URI="${{ secrets.DB_URI }}"
+# export DB_PASS="${{ secrets.DB_PASS }}"
+# export SUPABASE_URL="${{ secrets.SUPABASE_URL }}"
+# export SUPABASE_KEY="${{ secrets.SUPABASE_KEY }}"
+# export HUMOR_API=¨${{ secrets.HUMOR_API }}¨
+
+# docker-compose -p home up -d
+# docker exec home-c0rt-bot-1 bash -c "echo 'Europe/Berlin' > /etc/timezone"
+# docker restart home-c0rt-bot-1

@@ -1,5 +1,5 @@
 ## build runner
-FROM node:lts-alpine as build-runner
+FROM arm64v8/node:lts-alpine as build-runner
 
 # Set temp directory
 WORKDIR /tmp/app

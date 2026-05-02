@@ -2,6 +2,7 @@ import { dirname, importx } from "@discordx/importer";
 import { IntentsBitField, type Interaction, type Message } from "discord.js";
 import { Client } from "discordx";
 
+
 export const bot = new Client({
   // To use only guild command
   // botGuilds: [(client) => client.guilds.cache.map((guild) => guild.id)],
@@ -11,8 +12,9 @@ export const bot = new Client({
     IntentsBitField.Flags.Guilds,
     IntentsBitField.Flags.GuildMembers,
     IntentsBitField.Flags.GuildMessages,
-    IntentsBitField.Flags.GuildMessageReactions,
-    IntentsBitField.Flags.GuildVoiceStates,
+    IntentsBitField.Flags.MessageContent,
+    // IntentsBitField.Flags.GuildMessageReactions,
+    // IntentsBitField.Flags.GuildVoiceStates,
   ],
 
   // Debug logs are disabled in silent mode
@@ -24,7 +26,7 @@ export const bot = new Client({
   },
 });
 
-bot.once("ready", () => {
+bot.once("clientReady", () => {
   // Make sure all guilds are cached
   // await bot.guilds.fetch();
 
@@ -68,3 +70,5 @@ async function run() {
 }
 
 void run();
+
+// ====================================
