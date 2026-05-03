@@ -1,5 +1,5 @@
 import { Discord, On, type ArgsOf } from "discordx";
-import { DbService } from "../services/db.service";
+import { DbService } from "../services/db.service.js";
 
 const nSub = ['nigga', 'nigger', 'niggur', 'wigga', 'wigger', 'ngr ', ' ngr']
 const dbService = DbService.instance;

@@ -1,8 +1,8 @@
 import { type CommandInteraction } from "discord.js";
 import { Discord, Slash } from "discordx";
-import { DbService } from "../services/db.service";
-import { prepChangelogResponse } from "../services/changelog.service";
-import { toggleJob, jobActive, sendMessage } from '../events/croner'
+import { DbService } from "../services/db.service.js";
+import { prepChangelogResponse } from "../services/changelog.service.js";
+import { toggleJob, jobActive, sendMessage } from '../events/croner.js'
 const adminId = '198918288351297537';
 const dbService = DbService.instance;
 

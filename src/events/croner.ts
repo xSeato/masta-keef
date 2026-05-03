@@ -1,6 +1,6 @@
 import { Cron } from "croner";
-import { JokeData, LeagueService, MemeData, QuoteData, ReqData, RiddleData, TriviaData } from "../services/league.service";
-import { bot } from "../main";
+import { JokeData, LeagueService, MemeData, QuoteData, ReqData, RiddleData, TriviaData } from "../services/league.service.js";
+import { bot } from "../main.js";
 import { TextChannel } from "discord.js";
 
 const leagueApi = LeagueService.instance;

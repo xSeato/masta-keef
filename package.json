@@ -9,7 +9,7 @@
     "build": "tsc",
     "dev": "tsx --env-file ./.env src/main.ts",
     "start": "node build/main.js",
-    "start-test": "node build/main.js --env-file ./.env ",
+    "start-test": "node --env-file .env build/main.js",
     "watch": "nodemon --exec npm run dev --watch src --ext ts"
   },
   "dependencies": {
