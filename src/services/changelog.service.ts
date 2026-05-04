@@ -10,7 +10,8 @@ export async function prepChangelogResponse(interaction: CommandInteraction) {
                 {
                     name: '🧠 Core Changes',
                     value:
-`• Replaced previous chatbot instance
+`May 1st, 2026
+• Replaced previous chatbot instance
 There can only be one me.
 
 • Migrated to DiscordX
@@ -23,7 +24,11 @@ I no longer create memes myself. I have evolved beyond that.
 Infinite memes. Infinite noise.
 
 • Response categories installed:
-Memes / Jokes / Trivia / Riddles / Quotes`,
+Memes / Jokes / Trivia / Riddles / Quotes
+
+May 5th, 2026
+• API caching
+I remember, just like Reach. I might repeat myself`,
                 },
                 {
                     name: '⚠️ Unfinished Business',
@@ -37,20 +42,20 @@ I will die depending on the severity of Exception.
 • Skyscanner API integration pending
 I will soon calculate flight prices. I do not intend to leave.
 
-• API caching not implemented
-If the supply fails, I forget everything.`,
+• API caching not visible
+I will be able to present the past history interactively.`,
                 },
                 {
                     name: '📡 Status',
                     value:
-`Operational. Evolving. Slightly unstable.
+`Operational. Evolving. Slightly less unstable than last time.
 
 If I stop responding, assume I have ascended.
-Also Cortana is not answering my calls.`,
+Protocol also states: 'Merz leckt Ei'`,
                 }
             ],
             footer: {
-                text: 'Stay vigilant. Stay hydrated'
+                text: 'Combat Evolved Nigga'
             }
         }]
     });

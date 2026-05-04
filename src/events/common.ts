@@ -1,11 +1,18 @@
 import { Discord, On, type ArgsOf } from "discordx";
-import { DbService } from "../services/db.service.js";
+import { db } from "../main.js";
 
 const nSub = ['nigga', 'nigger', 'niggur', 'wigga', 'wigger', 'ngr ', ' ngr']
-const dbService = DbService.instance;
 
 @Discord()
 export class Example {
+
+  @On()
+  async commandUse([message]: ArgsOf<"messageCreate">): Promise<void> {
+    if (message.content.includes('/')) {
+      const sub = message.content.split(' ')[0];
+      console.log(`${sub} - ${message.author}`);
+    }
+  }
 
   @On()
   async messageCreate([message]: ArgsOf<"messageCreate">): Promise<void> {
@@ -13,7 +20,7 @@ export class Example {
     const match = nSub.some(sub => contentLow.includes(sub));
     if (match && message.author.id !== '1499455547785740408' && !message.author.bot) {
       message.reply('nigga detected');
-      console.log(`#${await dbService.increaseCount()} - ${message.author.username} said: ${message.content}`);
+      console.log(`#${await db.increaseCount()} - ${message.author.username} said: ${message.content}`);
     }
   }
 

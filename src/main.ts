@@ -1,6 +1,15 @@
 import { dirname, importx } from "@discordx/importer";
 import { IntentsBitField, type Interaction, type Message } from "discord.js";
 import { Client } from "discordx";
+import { LeagueService } from "./services/league.service.js";
+import { DbService } from "./services/db.service.js";
+import { CronService } from "./events/croner.js";
+
+const ADMIN_ID = '198918288351297537';
+const db = new DbService();
+const league = new LeagueService();
+const croner = new CronService()
+export { db, league, croner, ADMIN_ID}
 
 
 export const bot = new Client({
@@ -70,5 +79,6 @@ async function run() {
 }
 
 void run();
+
 
 // ====================================

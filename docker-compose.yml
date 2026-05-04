@@ -4,9 +4,4 @@ services:
     build: .
     restart: unless-stopped
     env_file: ~/masta/.env
-    # command: node build/main.js
     platform: linux/arm64
-    # environment:
-    #   - BOT_TOKEN=${BOT_TOKEN}
-    #   - SUPABASE=${SUPABASE}
-    #   - API_KEY=${API_KEY}

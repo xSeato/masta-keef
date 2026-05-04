@@ -1,4 +1,5 @@
 import fetch from 'node-fetch';
+import { db } from '../main.js';
 
 const token = process.env.API_KEY;
 const baseUrl = 'https://api.apileague.com/retrieve-random-';
@@ -12,15 +13,6 @@ const categories: string[] = ['meme', 'trivia', 'riddle', 'quote', 'joke']
 export class LeagueService {
 
     dailyQuotaCount = 0;
-
-    private constructor() { }
-    static #instance: LeagueService;
-    public static get instance(): LeagueService {
-        if (!LeagueService.#instance) {
-            LeagueService.#instance = new LeagueService();
-        }
-        return LeagueService.#instance;
-    }
 
     async getMeme(): Promise<ReqData> {
 
@@ -57,8 +49,11 @@ export class LeagueService {
                     throw new Error('Invalid type');
             }
             this.dailyQuotaCount++;
+            db.add(data)
         } else {
-            data.content = 'Quota limit';
+            const now = new Date().toLocaleString();
+            console.log(`${now} - Cache Fallback due to Quota limit`);
+            data.content = db.cache[Math.random() * db.cache.length].content;
         }
 
         console.log(`Sanity-Check: ${JSON.stringify(data)}`)
@@ -95,6 +90,6 @@ export interface RiddleData {
 }
 
 export interface ReqData {
-    content: JokeData | QuoteData | MemeData | RiddleData | TriviaData | 'Quota limit' | null;
+    content: JokeData | QuoteData | MemeData | RiddleData | TriviaData | null;
     type: string | null;
 }
