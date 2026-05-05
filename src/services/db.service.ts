@@ -1,5 +1,5 @@
 import { Pool, QueryResult } from 'pg'
-import { ReqData } from './league.service.js';
+import { ReqData } from './api.service.js';
 
 const countQuery = 'select * from nig_count';
 
@@ -14,7 +14,7 @@ export class DbService {
         this.pool.connect(async () => {
             console.log(`[DB] Connected!`);
             const res = await this.pool.query('SELECT type, content FROM api_responses ORDER BY id DESC');
-            this.loadRecentCache(res);
+            await this.loadRecentCache(res);
         })
     }
 

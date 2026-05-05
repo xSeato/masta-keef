@@ -2,7 +2,6 @@ FROM node:20-alpine
 
 # install dependencies for timezone settings
 ENV TZ=Europe/Berlin
-
 RUN apk add --no-cache tzdata \
     && ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime \
     && echo ${TZ} > /etc/timezone

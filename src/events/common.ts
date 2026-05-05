@@ -7,10 +7,10 @@ const nSub = ['nigga', 'nigger', 'niggur', 'wigga', 'wigger', 'ngr ', ' ngr']
 export class Example {
 
   @On()
-  async commandUse([message]: ArgsOf<"messageCreate">): Promise<void> {
-    if (message.content.includes('/')) {
-      const sub = message.content.split(' ')[0];
-      console.log(`${sub} - ${message.author}`);
+  interactionCreate([interaction]: ArgsOf<"interactionCreate">): void {
+    if (interaction.isCommand()) {
+      const now = new Date().toLocaleString();
+      console.log(`[LISTENER]: ${now} - /${interaction.commandName} by ${interaction.user.username}`)
     }
   }
 
@@ -20,7 +20,7 @@ export class Example {
     const match = nSub.some(sub => contentLow.includes(sub));
     if (match && message.author.id !== '1499455547785740408' && !message.author.bot) {
       message.reply('nigga detected');
-      console.log(`#${await db.increaseCount()} - ${message.author.username} said: ${message.content}`);
+      console.log(`[LISTENER]: #${await db.increaseCount()} - ${message.author.username} said: ${message.content}`);
     }
   }
 

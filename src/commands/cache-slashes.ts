@@ -10,7 +10,7 @@ export class CacheCommands {
     async getCacheCount(interaction: CommandInteraction): Promise<void> {
         await interaction.deferReply();
 
-        let memes = 0, jokes = 0, quotes = 0, trivias = 0, riddles = 0;
+        let memes = 0, jokes = 0, quotes = 0, trivias = 0, riddles = 0, gifs = 0;
         let nigs = (await db.getNigCount())
         db.cache.forEach(e => {
             switch (e.type) {
@@ -19,6 +19,7 @@ export class CacheCommands {
                 case 'quote': quotes++; break;
                 case 'riddle': riddles++; break;
                 case 'joke': jokes++; break;
+                case 'gif': gifs++; break;
                 default: break;
             }
         })
@@ -33,6 +34,7 @@ export class CacheCommands {
                     { name: 'Memes', value: String(memes), inline: true},
                     { name: 'Trivia', value: String(trivias), inline: true},
                     { name: 'Riddles', value: String(riddles), inline: true},
+                    { name: 'Gifs', value: String(gifs), inline: true},
                     { name: 'N-Words', value: String(nigs), inline: true},
                 ]
             }]

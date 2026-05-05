@@ -13,7 +13,7 @@ export class SlashCommands {
   async testRandomOutput(interaction: CommandInteraction): Promise<void> {
     await interaction.deferReply();
     if (interaction.user.id == ADMIN_ID) {
-      await croner.sendMessage();
+      await croner.sendMessage(true);
       await interaction.editReply('Test success')
     } else {
       await interaction.editReply(`You're not the dev? lol`);

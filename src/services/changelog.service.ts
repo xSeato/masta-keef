@@ -26,36 +26,43 @@ Infinite memes. Infinite noise.
 • Response categories installed:
 Memes / Jokes / Trivia / Riddles / Quotes
 
-May 5th, 2026
+May 4th, 2026
 • API caching
-I remember, just like Reach. I might repeat myself`,
+I remember, just like Reach. I might repeat myself.
+
+May 5th, 2026
+• Giphy integration
+Even more noise than before.
+
+• Slash command call logging
+Every command is now recorded. Nothing escapes my vision.
+
+• Improved error handling
+I fall less. I recover faster.
+
+• Cron scheduler refinement
+Time itself bends more accurately to my will.`,
                 },
                 {
                     name: '⚠️ Unfinished Business',
                     value:
-`• No daily limiter
-I currently have no restraint.
-
-• Better error handling
-I will die depending on the severity of Exception.
-
-• Skyscanner API integration pending
+`• Skyscanner API integration pending
 I will soon calculate flight prices. I do not intend to leave.
 
-• API caching not visible
+• Trackable API cache
 I will be able to present the past history interactively.`,
                 },
                 {
                     name: '📡 Status',
                     value:
-`Operational. Evolving. Slightly less unstable than last time.
+`Operational. Evolving. More aware than before.
 
 If I stop responding, assume I have ascended.
 Protocol also states: 'Merz leckt Ei'`,
                 }
             ],
             footer: {
-                text: 'Combat Evolved Nigga'
+                text: 'Combat Evolved Nigga. Submit ideas'
             }
         }]
     });
