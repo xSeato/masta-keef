@@ -14,7 +14,7 @@ const categories: string[] = ['meme', 'trivia', 'riddle', 'quote', 'joke', 'gif'
 
 export class ApiService {
 
-    dailyQuotaCount = 50;
+    dailyQuotaCount = 0;
 
     async getMeme(testCall: boolean = false): Promise<ReqData> {
 

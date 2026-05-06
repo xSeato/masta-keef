@@ -50,7 +50,10 @@ Time itself bends more accurately to my will.`,
 I will soon calculate flight prices. I do not intend to leave.
 
 • Trackable API cache
-I will be able to present the past history interactively.`,
+I will be able to present the past history interactively.
+
+• Text sanitizer
+Seato had to adjust the database content by hand (lol)`,
                 },
                 {
                     name: '📡 Status',
