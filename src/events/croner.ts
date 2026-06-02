@@ -20,11 +20,12 @@ export class CronService {
     this.sendMessage();
   });
 
-  resetQuotaJob = new Cron('0 0 L * *', async () => {
+  resetQuotaJob = new Cron('0 0 0 * * *', async () => {
     api.dailyQuotaCount = 0;
     console.log(`[CRONER]: resetted daily Quota counter`)
   });
-
+  
+  spotifyJob = new Cron('0 0 15 L * *', async () => {})
 
   async sendMessage(testCall?: boolean) {
     if (jobActive) {
