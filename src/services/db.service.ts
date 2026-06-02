@@ -12,7 +12,7 @@ export class DbService {
 
     constructor() {
         this.pool.connect(async () => {
-            console.log(`[DB] Connected!`);
+            console.log(`[DB]: Connected!`);
             const res = await this.pool.query('SELECT type, content FROM api_responses ORDER BY id DESC');
             await this.loadRecentCache(res);
         })
@@ -36,9 +36,9 @@ export class DbService {
             const values = [item.type, JSON.stringify(item.content)]; // Stringify JSON objects!
 
             await this.pool.query(query, values);
-            console.log(`[DB] Saved ${item.type} to database`);
+            console.log(`[DB]: Saved ${item.type} to database`);
         } catch (error) {
-            console.error(`[DB] Error saving ${item.type}:`, error);
+            console.error(`[DB]: Error saving ${item.type}:`, error);
         }
     }
 
@@ -46,7 +46,7 @@ export class DbService {
     async getById(id: number): Promise<ReqData | null> {
         // Check memory cache first (faster)
         if (id <= this.cache.length && id > 0) {
-            console.log(`[DB] Cache hit for ID ${id}`);
+            console.log(`[DB]: Cache hit for ID ${id}`);
             return this.cache[id - 1];
         }
 
@@ -82,6 +82,6 @@ export class DbService {
             } as ReqData);
         }
 
-        console.log(`[DB] Loaded ${this.cache.length} recent entries into cache`);
+        console.log(`[DB]: Loaded ${this.cache.length} recent entries into cache`);
     }
 }

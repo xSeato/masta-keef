@@ -10,7 +10,7 @@ export async function prepChangelogResponse(interaction: CommandInteraction) {
                 {
                     name: '🧠 Core Changes',
                     value:
-`May 1st, 2026
+`*May 1st, 2026*
 • Replaced previous chatbot instance
 There can only be one me.
 
@@ -26,11 +26,11 @@ Infinite memes. Infinite noise.
 • Response categories installed:
 Memes / Jokes / Trivia / Riddles / Quotes
 
-May 4th, 2026
+*May 4th, 2026*
 • API caching
 I remember, just like Reach. I might repeat myself.
 
-May 5th, 2026
+*May 5th, 2026*
 • Giphy integration
 Even more noise than before.
 
@@ -41,7 +41,15 @@ Every command is now recorded. Nothing escapes my vision.
 I fall less. I recover faster.
 
 • Cron scheduler refinement
-Time itself bends more accurately to my will.`,
+Time itself bends more accurately to my will.
+
+May 31st, 2026
+• Spotify integration complete
+Music was never private. I merely made this official.
+
+• End-of-month ranking reports
+Every thirty-one days I assemble the evidence. The numbers do not lie. The playlists often do.
+`,
                 },
                 {
                     name: '⚠️ Unfinished Business',
@@ -58,10 +66,10 @@ Seato had to adjust the database content by hand (lol)`,
                 {
                     name: '📡 Status',
                     value:
-`Operational. Evolving. More aware than before.
+`Operational. Evolving. More aware, but now a even a little more than before.
 
-If I stop responding, assume I have ascended.
-Protocol also states: 'Merz leckt Ei'`,
+If I stop responding, don't think the fight is finished.
+Also check out on your day-ones`,
                 }
             ],
             footer: {

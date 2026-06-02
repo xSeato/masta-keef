@@ -4,12 +4,14 @@ import { Client } from "discordx";
 import { ApiService } from "./services/api.service.js";
 import { DbService } from "./services/db.service.js";
 import { CronService } from "./events/croner.js";
+import { SpotifyService } from "./services/spotify.service.js";
 
 const ADMIN_ID = '198918288351297537';
 const db = new DbService();
 const api = new ApiService();
 const croner = new CronService()
-export { db, api, croner, ADMIN_ID}
+const spotify = new SpotifyService();
+export { db, api, croner, ADMIN_ID, spotify}
 
 
 export const bot = new Client({

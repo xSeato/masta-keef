@@ -1,8 +1,8 @@
 import { Cron } from "croner";
 import { GifData, JokeData, MemeData, QuoteData, ReqData, RiddleData, TriviaData } from "../services/api.service.js";
-import { ADMIN_ID, bot } from "../main.js";
+import { ADMIN_ID, bot, spotify } from "../main.js";
 import { api } from '../main.js';
-import { TextChannel } from "discord.js";
+import { APIEmbedField, TextChannel } from "discord.js";
 
 // const channelId = '881442130659270697'
 const channelId = '1374081460440666266'
@@ -20,7 +20,7 @@ export class CronService {
     this.sendMessage();
   });
 
-  resetQuotaJob = new Cron('0 0 * * *', async () => {
+  resetQuotaJob = new Cron('0 0 L * *', async () => {
     api.dailyQuotaCount = 0;
     console.log(`[CRONER]: resetted daily Quota counter`)
   });
@@ -82,6 +82,34 @@ export class CronService {
         return (req.content as GifData).url;
       default:
         throw new Error('Invalid type');
+    }
+  }
+
+  async postSpotifyTopTen() {
+    const channel = await bot.channels.fetch(channelId) as TextChannel
+    const users = ['seato', 'kishi', 'doubt']
+    const userFields: APIEmbedField[] = []
+    const month = new Date().toLocaleString('en-US', { month: 'long' });
+
+    for (let user of users) {
+      const tracks = await spotify.getTopTracks(user.toLowerCase());
+      const trackList = tracks.map((track, index) => `${index + 1}. **${track.name}** - ${track.artists[0].name}`).join('\n');
+      userFields.push({
+        name: `**${user}**`,
+        value: `${trackList}`
+      })
+    }
+
+    try {
+      channel.send({
+        embeds: [{
+          title: `Oh boi, time for the Top-10 of ${month}`,
+          description: 'Most listened songs from the last 4 weeks of the current timestamp',
+          fields: userFields
+        }]
+      })
+    } catch (error) {
+      console.error(error)
     }
   }
 }
