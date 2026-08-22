@@ -24,8 +24,11 @@ export class CronService {
     api.dailyQuotaCount = 0;
     console.log(`[CRONER]: resetted daily Quota counter`)
   });
-  
-  spotifyJob = new Cron('0 0 15 L * *', async () => {})
+
+  spotifyJob = new Cron('0 0 15 L * *', async () => {
+    this.postSpotifyTopTen();
+    console.log(`[SPOTIFY]: posted top-10 of the month with each registered user `)
+  })
 
   async sendMessage(testCall?: boolean) {
     if (jobActive) {
